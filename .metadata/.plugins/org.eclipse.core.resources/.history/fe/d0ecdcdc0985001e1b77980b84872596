@@ -1,0 +1,68 @@
+package com.project.apartment.controller;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.project.apartment.entity.RoomEntity;
+import com.project.apartment.service.RoomService;
+
+@RestController
+@CrossOrigin
+
+public class RoomController {
+
+	@Autowired
+	RoomService roomService;
+	
+	@PostMapping("/addroom")
+	public RoomEntity addRoom(@RequestBody RoomEntity rooms) {
+		System.out.println("Room: ");
+		return roomService.addroom(rooms);
+	}
+	
+	@PostMapping("/addRooms")
+	public List<RoomEntity> addRooms(List<RoomEntity> rooms){
+		System.out.println("List of Rooms: ");
+		List<RoomEntity> rm=roomService.addRooms(rooms);
+		return rm;
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<String> updateRoomById(@PathVariable Long id,@RequestBody RoomEntity rooms){
+		boolean rmupdate=roomService.updateRoomById(id,rooms);
+		if(rmupdate) {
+			return ResponseEntity.ok("Data updated successfully.");
+		}else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> deleteRoomById(@PathVariable Long id){
+		boolean rmdel=roomService.deleteRoomById(id);
+		if(rmdel) {
+			return ResponseEntity.ok("Room deleted successfully.");
+		}else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	@GetMapping("/listRooms")
+	public List<RoomEntity> listroom(){
+		System.out.println(" +in side list console ");
+		List<RoomEntity> rm=roomService.listAll();
+		System.out.println(rm.size());
+		System.out.println(rm.get(0).getStatus());
+		return rm;
+	}
+}

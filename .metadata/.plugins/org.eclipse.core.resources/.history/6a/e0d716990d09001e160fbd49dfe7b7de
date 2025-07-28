@@ -1,0 +1,5 @@
+package com.project.apartment.entity;
+
+public class RoomEntity {
+
+}

@@ -1,0 +1,9 @@
+package com.project.apartment.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.project.apartment.entity.RoomEntity;
+
+public interface RoomRepository extends JpaRepository<RoomEntity,String>{
+
+}

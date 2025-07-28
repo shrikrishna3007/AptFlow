@@ -1,0 +1,5 @@
+package com.project.apartment.dto;
+
+public class RoomDTO {
+
+}

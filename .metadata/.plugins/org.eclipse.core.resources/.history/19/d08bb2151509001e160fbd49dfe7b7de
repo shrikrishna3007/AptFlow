@@ -1,0 +1,10 @@
+package com.project.apartment.service;
+
+import java.util.List;
+
+public interface RoomService {
+
+	void saveRoom(RoomDTO roomDTO);
+	
+	List<RoomDTO> findAllRooms();
+}

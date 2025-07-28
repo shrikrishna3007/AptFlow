@@ -1,0 +1,15 @@
+package com.project.apartment.service;
+
+import org.springframework.stereotype.Service;
+
+import com.project.apartment.repository.RoomRepository;
+
+@Service
+public class RoomServiceImpl {
+
+	private RoomRepository roomRepository;
+	
+	public RoomServiceImpl(RoomRepository roomRepository) {
+		this.roomRepository=roomRepository;
+	}
+}

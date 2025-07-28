@@ -1,0 +1,5 @@
+package com.project.apartment.service;
+
+public class RoomService {
+
+}
